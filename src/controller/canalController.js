@@ -60,7 +60,7 @@ endpoints.delete('/canal/:id', async (req,resp) =>{
     try {
       let id = req.params.id;
       
-      let linhasAfetadas = await removerfaService(id);
+      let linhasAfetadas = await removerCanalService(id);
       if(linhasAfetadas >= 1){
         resp.send();
       }
