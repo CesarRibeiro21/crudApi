@@ -14,11 +14,11 @@ export async function inserirCanalFavorito(canalFavorito){
 
 export async function consultaCanalFavorito(){
     const comando = `
-    select tb_programa_favorito       id,
+    select id_programa_favorito       id,
     id_usuario                        usuario,
     id_canal_programa                 programa,
     vl_avaliacao                      avaliacao
-    from tb_canal;
+    from tb_programa_favorito ;
     `;
 
     let resposta = await con.query(comando);

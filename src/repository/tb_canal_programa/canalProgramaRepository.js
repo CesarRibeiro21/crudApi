@@ -28,7 +28,7 @@ export async function consultaCanalPrograma(){
     return registros;
 }
 
-export async function alterarCanalPrograma(id,canal){
+export async function alterarCanalPrograma(id,canalPrograma){
     let comando = `
         update tb_canal
         set id_canal = ?,

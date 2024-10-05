@@ -14,11 +14,9 @@ export async function inserirCanalUsuario(canalUsuario) {
 
 export async function consultaCanalUsuario() {
     const comando = `
-    select tb_usuario      id,
-    id_usuario                       usuario,
-    id_canal_programa                 programa,
-    vl_avaliacao                      avaliacao
-    from tb_canal;
+    select   id_usuario    id,
+    nm_usuario             nome        
+    from tb_usuario;
     `;
 
     let resposta = await con.query(comando);
@@ -27,25 +25,23 @@ export async function consultaCanalUsuario() {
     return registros;
 }
 
-export async function alterarCanalFavorito(id, canal) {
+export async function alterarCanalUsuario(id, usuario) {
     let comando = `
-        update tb_programa_favorito
-        set id_usuario = ?,
-        id_canal_programa = ?,
-        vl_avaliacao = ?
-        where id_canal = ?
+        update tb_usuario
+        set nm_usuario = ?
+        where id_usuario = ?
     `
-    let resposta = await con.query(comando, [canal.nome, canal.numero, canal.aberto, id]);
+    let resposta = await con.query(comando, [usuario.nome, id]);
 
     let info = resposta[0];
 
     return info.affectedRows;
 }
 
-export async function removerCanalFavorito(id) {
+export async function removerCanalUsuario(id) {
     const comando = `
-        delete from tb_programa_favorito
-        where id_programa_favorito = ?
+        delete from tb_usuario
+        where id_usuario  = ?
     `
     let resposta = await con.query(comando, [id]);
     let info = resposta[0];
